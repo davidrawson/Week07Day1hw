@@ -6,10 +6,13 @@ import static org.junit.Assert.assertEquals;
 public class RollercoasterTest {
 
     Rollercoaster rollercoaster;
+    Person person;
 
     @Before
     public void before(){
         rollercoaster = new Rollercoaster("Reginalds Screamin' Rollercoaster", 14, 140, 8.00, 260);
+        person = new Person(45,167,45.00);
+
     }
 
 
@@ -36,6 +39,21 @@ public class RollercoasterTest {
     @Test
     public void hasMaxHeight(){
         assertEquals(260, rollercoaster.getMaxHeight());
+    }
+
+    @Test
+    public void canCheckOldEnough(){
+        assertEquals(true, rollercoaster.checkOldEnough(person.getAge()));
+    }
+
+    @Test
+    public void canCheckTallEnough(){
+        assertEquals(true, rollercoaster.checkTallEnough(person.getHeight()));
+    }
+
+    @Test
+    public void canPay(){
+        assertEquals(true, rollercoaster.hasEnoughMoney(person.getMoney()));
     }
 
 }

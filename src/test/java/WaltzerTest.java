@@ -6,10 +6,13 @@ import static org.junit.Assert.assertEquals;
 public class WaltzerTest {
 
     Waltzer waltzer;
+    Person person;
 
     @Before
     public void before(){
         waltzer = new Waltzer("Berties Waltzer", 8, 125, 4.50, 54);
+        person = new Person(45,167,45.00);
+
     }
 
     @Test
@@ -36,4 +39,20 @@ public class WaltzerTest {
     public void hasCapacity(){
         assertEquals(54, waltzer.getCapacity());
     }
+
+    @Test
+    public void canCheckOldEnough(){
+        assertEquals(true, waltzer.checkOldEnough(person.getAge()));
+    }
+
+    @Test
+    public void canCheckTallEnough(){
+        assertEquals(true, waltzer.checkTallEnough(person.getHeight()));
+    }
+
+    @Test
+    public void canPay(){
+        assertEquals(true, waltzer.hasEnoughMoney(person.getMoney()));
+    }
+
 }
