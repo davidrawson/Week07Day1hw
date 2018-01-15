@@ -1,11 +1,11 @@
-public abstract class Ride {
+public abstract class Ride implements IRide {
 
-    private String name;
-    private int minAge;
-    private int minHeight;
-    private double price;
+    protected String name;
+    protected int minAge;
+    protected int minHeight;
+    protected double price;
 
-    public Ride(String name, int minAge, int minHeight, double price){
+    public Ride(String name, int minAge, int minHeight, double price) {
         this.name = name;
         this.minAge = minAge;
         this.minHeight = minHeight;
@@ -13,20 +13,51 @@ public abstract class Ride {
 
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getMinAge(){
+    public int getMinAge() {
         return this.minAge;
     }
 
-    public int getMinHeight(){
+    public int getMinHeight() {
         return minHeight;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         return this.price;
     }
 
+    public boolean checkOldEnough(int age) {
+        if (age >= minAge) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkTallEnough(int height) {
+        if (height >= minHeight) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void pay(double money) {
+        if (hasEnoughMoney(money)) {
+            money -= price;
+        }
+    }
+
+    public boolean hasEnoughMoney(double money) {
+        if (money >= price) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
 }
